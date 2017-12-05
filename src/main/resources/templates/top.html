@@ -14,8 +14,6 @@
     <div id="ajaxAccess">
         <ul>
           <li v-for="team in teamList">
-            <!-- <a href="/vue/detail?id= + <p th:text='${team.id}'/>"> {{ team.teamName }} </a> -->
-            <!-- <a th:href="@{/detail?id=}(id)"> {{ team.teamName }} </a> -->
             <a v-bind:href=" '/' + contextPath + '/detail?id=' + team.id">{{team.teamName}} </a>
           </li>
         </ul>
