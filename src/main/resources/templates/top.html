@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"/>
+<script src="https://cdn.jsdelivr.net/vue/latest/vue.js"></script>
+<script th:src="@{/js/vuesample.js}"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+<title>野球チーム表示</title>
+</head>
+<body>
+
+<h3>野球チーム一覧</h3>
+    <div id="ajaxAccess">
+        <ul>
+          <li v-for="team in teamList">
+            <!-- <a href="/vue/detail?id= + <p th:text='${team.id}'/>"> {{ team.teamName }} </a> -->
+            <!-- <a th:href="@{/detail?id=}(id)"> {{ team.teamName }} </a> -->
+            <a v-bind:href=" '/' + contextPath + '/detail?id=' + team.id">{{team.teamName}} </a>
+          </li>
+        </ul>
+    </div>
+
+<div id="openingMessage">{{ message }}</div>
+
+
+<div id="createTeam">
+<input v-model="message" placeholder="新しいチーム名"/>
+  <p>新チーム名は: {{ message }}</p>
+  <button v-on:click="register">登録</button>
+</div>
+
+</body>
+</html>

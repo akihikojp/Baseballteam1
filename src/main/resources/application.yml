@@ -1,0 +1,10 @@
+spring:
+  datasource:
+    driverClassName: org.postgresql.Driver
+    url: jdbc:postgresql://localhost/student
+    username: postgres
+    password: postgres
+server:
+  context-path: /vue
+  
+security.basic.enabled: false
