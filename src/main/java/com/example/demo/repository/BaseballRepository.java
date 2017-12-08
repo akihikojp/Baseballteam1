@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
@@ -38,5 +39,14 @@ public class BaseballRepository {
 		String sql = "SELECT id, league_name, team_name, headquarters, inauguration, history from baseball_teams WHERE id = :id";
 		SqlParameterSource param = new MapSqlParameterSource().addValue("id", id);
 		return template.queryForObject(sql, param, teamRowMapper);
+	}
+	
+	public void save(BaseballTeam ajaxBaseballTeam){
+		SqlParameterSource param = new BeanPropertySqlParameterSource(ajaxBaseballTeam);
+		
+		String sql = "insert into baseball_teams (league_name, team_name, headquarters, inauguration, history) "
+				   + "values (:leagueName, :teamName, :headquarters, :inauguration, :history)";
+		
+		template.update(sql, param);
 	}
 }

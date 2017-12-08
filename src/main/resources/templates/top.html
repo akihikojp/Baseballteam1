@@ -13,18 +13,20 @@
 <h3>野球チーム一覧</h3>
     <div id="ajaxAccess">
         <ul>
-          <li v-for="team in teamList">
+          <li v-for="team in teamList" >
             <a v-bind:href=" '/' + contextPath + '/detail?id=' + team.id">{{team.teamName}} </a>
           </li>
         </ul>
     </div>
 
-<div id="openingMessage">{{ message }}</div>
-
 
 <div id="createTeam">
-<input v-model="message" placeholder="新しいチーム名"/>
-  <p>新チーム名は: {{ message }}</p>
+  <p><input v-model="teamName" placeholder="新しいチーム名"/> {{ teamName }}</p>
+  <p><input v-model="leagueName" placeholder="セ・パリーグ"/> {{ leagueName }}</p>
+  <p><input v-model="headquarters" placeholder="本拠地"/>    {{ headquarters }}</p>
+  <p><input v-model="inauguration" placeholder="設立年月日"/> {{ inauguration }}</p>
+  <p><input v-model="history" placeholder="歴史"/>           {{ history }}</p>
+  
   <button v-on:click="register">登録</button>
 </div>
 
