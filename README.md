@@ -1,47 +1,19 @@
-#####htmlでVue.jsを使う(CDN方式)
-`<script src="https://cdn.jsdelivr.net/vue/latest/vue.js"></script>`
-#####Vue.jsで非同期接続を行う為のaxiosメソッドを使う(CDN)
-`<script src="https://unpkg.com/axios/dist/axios.min.js"></script>`
-#####ThymeLeafで外部ファイル(例えばjsファイル)を参照する
-`<script th:src="@{/js/vuesample.js}"></script>`
+
+ファイルのダウンロードとアップロード
 
 
---
+・DBはBLOB型で保存されていると仮定しても、Fileオブジェクトはbyte[]型でもおｋ
+・Formの型はMultiPartFile
+・templateにはenctypeが必要
+・fileNameでファイル名が取れる
 
-####ThymeLeafでcontextPathを取得する
+InputStreamは、byteを扱いやすくしたやつっていう認識
 
-・html側
-`<input id="contextPath" type="hidden" th:value="@{/}" />`
 
-・js側
-
-```
-var contextPath = document.getElementById("contextPath");
-
--省略-
-
-  data:{
-	 contextPath : contextPath
-  }
-```
-
---
-
-####axiosを使った非同期処理メソッド(例)
-```
-	var ajaxAccess = new Vue({
-		el:'#ajaxAccess',
-		data: {
-			teamList : "",
-			contextPath : contextPath
-	  },
-		methods: {
-			findTeam() {
-				axios.get('/vue/index')
-				.then(function (response) {
-					ajaxAccess.$data.teamList = response.data;
-				})
-			}
-		}
-	});
-```
+・データが大きすぎる場合
+        ymlにファイルの最大MBを設定する。
+		// https://qiita.com/tera78/items/432d365c527342dcf9f4
+		// https://www.agilegroup.co.jp/technote/springboot-fileupload-error-handling.html
+	
+	
+・100MBくらいの設定ならできるが、それされもオーバーした場合は例外処理を書く。
