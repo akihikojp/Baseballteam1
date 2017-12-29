@@ -35,22 +35,25 @@ public class BaseballController {
 	BaseballRepository baseballRepository;
 
 	@RequestMapping("/top")
-	public String top() {
+	public String topPage() {
 		return "detail";
 	}
 
 	@PostMapping("/upload")
 	public String upload(FileForm form) throws IOException {
 		File file = new File();// Fileオブジェクト生成
+		
+		System.out.println("サイズの数は----------" + form.getFile().size());
+		
 		////////////////////////////////////////////////////////////
 		/////ファイルのアップロード
 		////////////////////////////////////////////////////////////
-		// このパスの中では、exceptionhandlerを作っておく.
-		// MultiPartで取得したデータを。byteデータに変換
-		file.setBlobFile(form.getFile().getBytes());
-		// file.setFileName(form.getFile().getName()); //名前はfileが入る
-		file.setFileName(form.getFile().getOriginalFilename()); // これが、拡張子付きの名前が入る
-		baseballRepository.save(file);
+//		// このパスの中では、exceptionhandlerを作っておく.
+//		// MultiPartで取得したデータを。byteデータに変換
+//		file.setBlobFile(form.getFile().getBytes());
+//		// file.setFileName(form.getFile().getName()); //名前はfileが入る
+//		file.setFileName(form.getFile().getOriginalFilename()); // これが、拡張子付きの名前が入る
+//		baseballRepository.save(file);
 
 		////////////////////////////////////////////////////////////
 		/////アップロードしたファイルの取得
@@ -63,7 +66,7 @@ public class BaseballController {
 		// https://qiita.com/tera78/items/432d365c527342dcf9f4
 		// https://www.agilegroup.co.jp/technote/springboot-fileupload-error-handling.html
 		
-		return top();
+		return topPage();
 	}
 
 	

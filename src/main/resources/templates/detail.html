@@ -4,14 +4,70 @@
 <meta charset="UTF-8" />
 <title>詳細ページ</title>
 </head>
+<script src="https://code.jquery.com/jquery-1.12.1.min.js"></script>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" rel="stylesheet"/>
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
 <body>
 
-	<form th:action="@{/upload}" th:object="${fileForm}" method="post" enctype="multipart/form-data">
-		<input type="file" name="file"/>
-		<input type="submit" value="upload"/>
-	</form>
+<!-- 	<div class="well">
+		<form th:action="@{/upload}" th:object="${fileForm}" method="post" enctype="multipart/form-data">
+			<input type="file" name="file" /><br /> 
+			<input type="file" name="file" /><br /> 
+			<input type="file" name="file" /><br /> 
+			<input type="submit" value="upload" /><br /> 
+			<a th:href="@{/download}">ダウンロード</a>
+		</form>
+	</div> -->
 
-	<a th:href="@{/download}">ダウンローーーーーーーーーーーーーーーーーーーーーーード</a>
+<div class="well">
+		<form th:action="@{/upload}" th:object="${fileForm}" method="post" enctype="multipart/form-data">
+			<input type="file" name="file" multiple="multiple" /><br />
+			<input type="submit" value="upload" /><br />
+			<a th:href="@{/download}">ダウンロード</a>
+		</form>
+	</div>
+	
+<!-- 		<div class="well">
+			<form action="/file-upload" class="dropzone" id="my-awesome-dropzone">
+			<input type="file" name="file" /><br /> 
+			<input type="submit" value="upload" /><br /> 
+			</form>
+		</div> -->
+		
+		
+		
+		<div class="span4">
+										<div class="widget-box">
+											<div class="widget-header">
+												<h4>Custom File Input</h4>
 
+												<span class="widget-toolbar">
+													<a href="#" data-action="collapse">
+														<i class="icon-chevron-up"></i>
+													</a>
+
+													<a href="#" data-action="close">
+														<i class="icon-remove"></i>
+													</a>
+												</span>
+											</div>
+
+											<div class="widget-body">
+												<div class="widget-main">
+													<input type="file" id="id-input-file-2" />
+													<input multiple="" type="file" id="id-input-file-3" />
+													<label>
+														<input type="checkbox" name="file-format" id="id-file-format" class="ace" />
+														<span class="lbl"> Allow only images</span>
+													</label>
+												</div>
+											</div>
+										</div>
+									</div>
+		
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="/js/dropzone.js"></script>
+<script src="/js/file-upload.js"></script>
 </body>
 </html>
